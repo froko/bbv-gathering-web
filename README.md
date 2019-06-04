@@ -3,7 +3,9 @@
 [Link to the slides](https://gitpitch.com/froko/bbv-gathering-web)
 
 ### Content
+
 - Tooling
 - RxJS
 - State Management
+- UI Testing
 - Authentication & Authorization
