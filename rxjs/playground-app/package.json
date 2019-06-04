@@ -1,0 +1,54 @@
+{
+  "name": "playground-app",
+  "version": "1.0.0",
+  "description": "Execution environment for RxJs samples",
+  "keywords": [
+    "rxjs",
+    "playground"
+  ],
+  "author": "Patrick Ineichen <github@frokonet.ch>",
+  "repository": "git@github.com:froko/bbv-gathering-web.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development",
+    "test": "jest",
+    "lint": "tslint --project tsconfig.json --format codeFrame --fix",
+    "format": "prettier --write \"./**/*{.ts,.js,.json}\""
+  },
+  "dependencies": {
+    "rxjs": "6.5.2"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.13",
+    "html-webpack-plugin": "3.2.0",
+    "jasmine-marbles": "0.5.0",
+    "jest": "24.8.0",
+    "prettier": "1.17.1",
+    "ts-jest": "24.0.2",
+    "ts-loader": "6.0.1",
+    "tslint": "5.16.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-config-standard": "8.0.1",
+    "typescript": "3.4.5",
+    "webpack": "4.32.0",
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "3.4.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/|_)(test|spec))\\.(tsx?)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ]
+  }
+}

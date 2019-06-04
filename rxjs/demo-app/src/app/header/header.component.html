@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <span (click)="goToHomePage()">S.H.I.E.L.D.</span>
+  <button mat-button (click)="goTo('heroes1')">Heroes 1</button>
+  <button mat-button (click)="goTo('heroes2')">Heroes 2</button>
+  <button mat-button (click)="goTo('heroes3')">Heroes 3</button>
+  <button mat-button (click)="goTo('heroes4')">Heroes 4</button>
+  <button mat-button (click)="goTo('wikipedia')">Wikipedia</button>
+  <button mat-button (click)="goTo('memoryleak')">Memory Leak</button>
+  <button mat-button (click)="goTo('takeuntil')">TakeUntil</button>
+  <button mat-button (click)="goTo('router')">Router</button>
+  <span class="fill-remaining-space"></span>
+  <button mat-button (click)="toggleUrl()">Toggle API URL</button>
+</mat-toolbar>

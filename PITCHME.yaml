@@ -1,0 +1,4 @@
+logo: assets/bbv.png
+footnote: 'bbv Gathering 2019'
+theme-override: assets/custom.css
+remote-control: true

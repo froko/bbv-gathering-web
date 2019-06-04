@@ -1,0 +1,14 @@
+.reference-box {
+  font-size: 50% !important;
+  text-align: left;
+}
+
+.reveal .slides {
+  width: 98%;
+}
+
+.reveal section img {
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}

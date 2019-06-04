@@ -1,0 +1,24 @@
+<mat-card class="demo-card">
+  <mat-card-header>
+    <mat-card-title>Heroes 3</mat-card-title>
+    <mat-card-subtitle>map and catch operators</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <table>
+      <tr *ngFor="let hero of heroes">
+        <td>
+          <img src="{{ hero.profile }}" alt="profile" />
+        </td>
+        <td class="alias">
+          <h3>{{ hero.alias }}</h3>
+        </td>
+      </tr>
+    </table>
+
+    <a mat-button (click)="add()">add</a>
+
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </mat-card-content>
+</mat-card>

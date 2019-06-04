@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card class="members-card">
+    <mat-card-header>
+      <mat-card-title>Members of S.H.I.E.L.D.</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table>
+        <tr *ngFor="let member of members$ | async" style="cursor:pointer" (click)="navigate(member.id)">
+          <td style="width: 120px;"><img src="{{ member.profile }}" /></td>
+          <td style="width: 120px;">
+            <b>{{ member.name }}</b>
+          </td>
+          <td style="width: 150px;">Level {{ member.level }}</td>
+          <td><bar-rating [rate]="member.rating"></bar-rating></td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="last-visited-card">
+    <mat-card-header>
+      <mat-card-title>Last visited members</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <span>Todo</span>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,17 @@
+<mat-card class="demo-card">
+  <mat-card-header>
+    <mat-card-title>Router</mat-card-title>
+    <mat-card-subtitle>The router has observables too...!</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-button (click)="previousHero()">Prev</button>
+
+    <img *ngIf="hero$ | async as hero; else noHero" src="{{ hero.profile }}" alt="profile" />
+
+    <ng-template #noHero>
+      <img src="assets/nohero.png" style="width: 90px" alt="profile" />
+    </ng-template>
+
+    <button mat-button (click)="nextHero()">Next</button>
+  </mat-card-content>
+</mat-card>
