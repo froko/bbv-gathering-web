@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-bar-rating/themes/br-default-theme.css';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.alias {
+  width: 300px;
+  padding-left: 20px;
+}
+
+.error {
+  background-color: red;
+  color: white;
+  margin-bottom: 8px;
+  padding: 8px;
+}
