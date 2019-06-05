@@ -1,4 +1,4 @@
-describe('Hello Angular', () => {
+describe('S.H.I.E.L.D. Members', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200');
   });
