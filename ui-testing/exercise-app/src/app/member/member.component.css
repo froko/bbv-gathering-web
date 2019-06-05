@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+
+.member-card {
+  width: 400px;
+  margin: 8px;
+}
+
+.last-visited-card {
+  width: 300px;
+  margin: 8px;
+}

@@ -1,0 +1,4 @@
+<div class="container">
+  <app-members-list [members]="members$ | async" (click)="navigate($event)"></app-members-list>
+  <app-last-visited [members]="mostRecentVisitedMembers$ | async" (click)="navigate($event)"></app-last-visited>
+</div>

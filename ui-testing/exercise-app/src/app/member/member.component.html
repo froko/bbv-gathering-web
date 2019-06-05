@@ -1,0 +1,13 @@
+<div class="container">
+  <mat-card class="member-card" *ngIf="member$ | async as member">
+    <mat-card-header>
+      <mat-card-title>{{ member.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img src="{{ member.profile }}" />
+      <p>{{ member.description }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <app-last-visited [members]="mostRecentVisitedMembers$ | async" (click)="navigate($event)"></app-last-visited>
+</div>

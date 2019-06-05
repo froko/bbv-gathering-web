@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": ["cypress"],
+    "target": "es5"
+  },
+  "include": ["**/*.ts"]
+}
