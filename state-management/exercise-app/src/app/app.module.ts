@@ -18,7 +18,9 @@ import { ENV_PROVIDERS } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { LastVisitedComponent } from './last-visited/last-visited.component';
 import { MemberComponent } from './member/member.component';
+import { MembersListComponent } from './members/members-list/members-list.component';
 import { MembersComponent } from './members/members.component';
 
 const routes: Routes = [
@@ -29,7 +31,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, MembersComponent, MemberComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    MembersComponent,
+    MemberComponent,
+    MembersListComponent,
+    LastVisitedComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

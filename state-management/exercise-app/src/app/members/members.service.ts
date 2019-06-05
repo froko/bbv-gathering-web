@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { forkJoin, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
+import { find, flatMap, map } from 'rxjs/operators';
 
 import { AgentResource, AvengerResource, LeaderResource, Member, MemberWithRating, Rating } from '@exercise-app/data';
 
@@ -12,25 +12,35 @@ import { AgentResource, AvengerResource, LeaderResource, Member, MemberWithRatin
 export class MembersService {
   private mostRecentVisitedList: Member[] = [];
 
+  private agents$ = this.http.get<AgentResource>('api/agents').pipe(map(r => r.agents));
+  private avengers$ = this.http.get<AvengerResource>('api/avengers').pipe(map(r => r.avengers));
+  private leaders$ = this.http.get<LeaderResource>('api/leaders').pipe(map(r => r.leaders));
+  private ratings$ = this.http.get<Rating[]>('api/ratings');
+
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<MemberWithRating[]> {
-    const agents$ = this.http.get<AgentResource>('api/agents').pipe(map(r => r.agents));
-    const avengers$ = this.http.get<AvengerResource>('api/avengers').pipe(map(r => r.avengers));
-    const leaders$ = this.http.get<LeaderResource>('api/leaders').pipe(map(r => r.leaders));
-    const ratings$ = this.http.get<Rating[]>('api/ratings');
-
-    const members$ = forkJoin(agents$, avengers$, leaders$).pipe(
+    const members$ = forkJoin(this.agents$, this.avengers$, this.leaders$).pipe(
       map(members => members[0].concat(members[1]).concat(members[2]))
     ) as Observable<any[]>;
 
-    const membersWithRatings$ = forkJoin(members$, ratings$).pipe(
+    const membersWithRatings$ = forkJoin(members$, this.ratings$).pipe(
       map(this.asMemberWithRating),
       map(this.distinct),
       map(members => members.sort(this.sortById))
     ) as Observable<MemberWithRating[]>;
 
     return membersWithRatings$;
+  }
+
+  getMember(id: number): Observable<Member> {
+    const member$ = forkJoin(this.agents$, this.avengers$, this.leaders$).pipe(
+      map(members => members[0].concat(members[1]).concat(members[2])),
+      flatMap(m => m),
+      find(m => m.id === id)
+    ) as Observable<Member>;
+
+    return member$;
   }
 
   getMostRecentVisitedMembers(): Observable<Member[]> {

@@ -6,7 +6,6 @@ import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Member } from '@exercise-app/data';
 import { MembersService } from '../members/members.service';
-import { MemberService } from './member.service';
 
 @Component({
   selector: 'app-member',
@@ -17,18 +16,13 @@ export class MemberComponent implements OnInit {
   member$: Observable<Member>;
   mostRecentVisitedMembers$: Observable<Member[]>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private memberService: MemberService,
-    private membersService: MembersService
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router, private membersService: MembersService) {}
 
   ngOnInit() {
     this.member$ = this.route.paramMap.pipe(
       map(params => params.get('id')),
       switchMap(id => {
-        return this.memberService.getMember(+id);
+        return this.membersService.getMember(+id);
       }),
       tap(member => this.membersService.updateMostRecentVisitedList(member)),
       tap(() => (this.mostRecentVisitedMembers$ = this.membersService.getMostRecentVisitedMembers()))

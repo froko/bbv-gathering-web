@@ -9,20 +9,5 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="last-visited-card">
-    <mat-card-header>
-      <mat-card-title>Last visited members</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <ul>
-        <li
-          *ngFor="let member of mostRecentVisitedMembers$ | async"
-          (click)="navigate(member.id)"
-          style="cursor: pointer"
-        >
-          {{ member.name }}
-        </li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
+  <app-last-visited [members]="mostRecentVisitedMembers$ | async" (click)="navigate($event)"></app-last-visited>
 </div>
